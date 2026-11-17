@@ -39,7 +39,7 @@ const highlights: Highlight[] = [
     icon: Cloud,
     label: "Cloud mode",
     title: "From anywhere with Cloud",
-    content: "The free relay reaches your PC from anywhere — no port forwarding.",
+    content: "The relay reaches your PC from anywhere — no port forwarding.",
   },
   {
     icon: Keyboard,

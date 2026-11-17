@@ -13,10 +13,6 @@ const faqs = [
     a: "No. Mousify works over your phone's hotspot or USB tethering too — and Cloud mode works from anywhere with an internet connection.",
   },
   {
-    q: "Is it free?",
-    a: "Yes — free forever, with no account and no premium tier.",
-  },
-  {
     q: "Is my data safe?",
     a: "On your local network, traffic stays between your phone and your PC. Every connection is protected by a unique per-PC token, and nothing leaves your network unless you turn on Cloud mode.",
   },

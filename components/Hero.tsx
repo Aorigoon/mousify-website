@@ -4,10 +4,13 @@ import PhoneShot from "@/components/PhoneShot";
 
 export default function Hero() {
   return (
-    <div className="relative z-[1] grid w-full place-items-center overflow-hidden p-8">
+    <div className="relative z-[1] grid w-full place-items-center overflow-x-clip p-8">
+      {/* overflow-x-clip only: the phone's shadow must fall past the hero's
+          bottom edge and fade out naturally. overflow-hidden clipped it
+          mid-fade, leaving a hard horizontal seam above the Showcase. */}
       <div aria-hidden className="blur-hero pointer-events-none absolute inset-0 -z-10" />
       <Nav />
-      <div className="mt-16 flex flex-col items-center gap-6">
+      <div className="mt-24 flex flex-col items-center gap-6">
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-2.5 py-1 font-normal">
           <Image
             src="/mousify-icon.png"
@@ -17,8 +20,7 @@ export default function Hero() {
             className="h-6 w-6 rounded-full"
           />
           <span className="px-2 text-xs font-medium text-muted-foreground sm:text-sm">
-            <span className="text-foreground">Free</span> · No account ·
-            Works anywhere
+            No account · Works anywhere
           </span>
         </span>
         <h1 className="text-center text-4xl leading-[1.1] font-medium tracking-tight sm:text-7xl">

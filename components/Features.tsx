@@ -96,7 +96,7 @@ export default function Features() {
         <div className="text-muted-foreground">in your pocket.</div>
       </h2>
       <p className="mb-3 max-w-lg text-center leading-6 tracking-tight sm:text-xl lg:mb-8">
-        Touchpad, keyboard, media, and more — free, with no account.
+        Touchpad, keyboard, media, and more — with no account.
       </p>
 
       <div className="grid w-full max-w-6xl gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-16">

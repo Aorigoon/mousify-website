@@ -91,7 +91,7 @@ export default function Footer() {
         ))}
       </div>
       <p className="mx-auto px-6 text-center text-sm text-muted-foreground">
-        © 2026 Aorigoon. Mousify is free software.
+        © 2026 Aorigoon.
       </p>
     </footer>
   );

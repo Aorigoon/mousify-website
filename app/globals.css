@@ -66,7 +66,10 @@
     radial-gradient(36rem 24rem at 88% 8%, oklch(0.85 0.1 255 / 0.45), transparent 70%),
     radial-gradient(48rem 30rem at 50% 60%, oklch(0.88 0.08 210 / 0.45), transparent 70%);
   filter: blur(48px);
-  mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
+  /* Fade completes at 70% of the hero, well before its bottom edge, so the
+     blur(48px) bleed dies out before the hero is clipped — no hard seam
+     between hero and Showcase. */
+  mask-image: linear-gradient(to bottom, black 30%, transparent 70%);
 }
 
 .blur-footer {

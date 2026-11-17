@@ -1,25 +1,45 @@
-import { Monitor, Smartphone } from "lucide-react";
+import { AppWindow, Laptop, Monitor, Smartphone } from "lucide-react";
 
 const RELEASES_URL = "https://github.com/Aorigoon/mouse/releases";
 
-const downloads = [
+type DownloadItem = {
+  icon: typeof Smartphone;
+  title: string;
+  detail: string;
+  note: string;
+  // href set = real download link; button set without href = disabled
+  // placeholder; neither = "Coming soon" card with no button.
+  button?: string;
+  href?: string;
+};
+
+const downloads: DownloadItem[] = [
   {
     icon: Smartphone,
     title: "Android",
-    detail: "APK for your phone",
-    version: "Latest release",
-    size: "≈ 70 MB",
-    button: "Download for Android",
-    primary: true,
+    detail: "For your phone",
+    note: "Closed testing · Link coming soon",
+    button: "Get it on Google Play",
   },
   {
     icon: Monitor,
     title: "Linux",
     detail: "AppImage for your PC",
-    version: "Latest release",
-    size: "≈ 36 MB",
+    note: "Latest release · ≈ 36 MB",
     button: "Download for Linux",
-    primary: false,
+    href: RELEASES_URL,
+  },
+  {
+    icon: AppWindow,
+    title: "Windows",
+    detail: "For Windows PCs",
+    note: "Coming soon",
+  },
+  {
+    icon: Laptop,
+    title: "macOS",
+    detail: "For Mac",
+    note: "Coming soon",
   },
 ];
 
@@ -34,10 +54,10 @@ export default function Download() {
       </span>
       <h2 className="text-center text-3xl leading-[1.1] font-medium tracking-tight sm:text-5xl">
         Get Mousify,
-        <div className="text-muted-foreground">free, today.</div>
+        <div className="text-muted-foreground">today.</div>
       </h2>
       <p className="mb-3 max-w-lg text-center leading-6 tracking-tight sm:text-xl lg:mb-8">
-        Free forever. No account, no sign-up.
+        No account, no sign-up.
       </p>
       <div className="grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
         {downloads.map((item) => {
@@ -52,19 +72,24 @@ export default function Download() {
               </div>
               <h3 className="mt-4 text-xl font-medium">{item.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
-              <p className="mt-4 text-sm text-muted-foreground">
-                {item.version} · {item.size}
-              </p>
-              <a
-                href={RELEASES_URL}
-                className={
-                  item.primary
-                    ? "mt-6 inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-3xl transition hover:bg-primary/90"
-                    : "mt-6 inline-flex h-10 items-center justify-center rounded-full bg-secondary px-6 text-sm font-medium text-secondary-foreground transition hover:bg-secondary/80"
-                }
-              >
-                {item.button}
-              </a>
+              <p className="mt-4 text-sm text-muted-foreground">{item.note}</p>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-secondary px-6 text-sm font-medium text-secondary-foreground transition hover:bg-secondary/80"
+                >
+                  {item.button}
+                </a>
+              ) : item.button ? (
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  className="mt-6 inline-flex h-10 cursor-not-allowed items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground opacity-50 shadow-3xl"
+                >
+                  {item.button}
+                </button>
+              ) : null}
             </div>
           );
         })}

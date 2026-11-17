@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mousify-website.aorigoon.workers.dev"),
   title: "Mousify — Your Phone is Your PC's Touchpad",
   description:
-    "Turn your Android phone into a touchpad, keyboard, and media remote for your Linux PC. Free, no account — over Wi-Fi or from anywhere with Cloud mode.",
+    "Turn your Android phone into a touchpad, keyboard, and media remote for your Linux PC. No account — over Wi-Fi or from anywhere with Cloud mode.",
   icons: { icon: "/mousify-icon.png" },
   openGraph: {
     title: "Mousify — Your Phone is Your PC's Touchpad",
     description:
-      "Turn your Android phone into a touchpad, keyboard, and media remote for your Linux PC. Free, no account.",
+      "Turn your Android phone into a touchpad, keyboard, and media remote for your Linux PC. No account.",
     images: ["/mousify-icon.png"],
     type: "website",
   },

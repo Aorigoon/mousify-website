@@ -39,7 +39,7 @@ function Branch({ flip = false }: { flip?: boolean }) {
 
 function Wreath({ children }: { children: ReactNode }) {
   return (
-    <div className="grid w-min grid-cols-[1fr_60px_1fr] md:grid-cols-[1fr_150px_1fr]">
+    <div className="grid w-min grid-cols-[1fr_64px_1fr] md:grid-cols-[1fr_170px_1fr]">
       <Branch />
       <div className="-mx-2.5 mt-1 flex flex-col items-center md:-mt-2.5">
         {children}
@@ -49,28 +49,33 @@ function Wreath({ children }: { children: ReactNode }) {
   );
 }
 
+// One label class + one value class for all three stats — consistent sizing.
+const labelClass = "text-xs font-medium md:text-base";
+const valueClass =
+  "mt-1.5 text-center text-sm font-bold text-balance md:text-2xl";
+
 export default function Showcase() {
   return (
     <div className="relative mx-auto mt-12 mb-8 grid w-fit grid-cols-3 gap-8 md:my-24 md:gap-20">
       <Wreath>
-        <p className="mb-0.5 text-[0.625rem] md:text-base">Price</p>
-        <p className="text-center text-xl font-bold md:mt-1.5 md:text-3xl">
-          Free
+        <p className={labelClass}>Setup</p>
+        <p className={valueClass}>
+          Scan
           <br />
-          Forever
+          &amp; go
         </p>
       </Wreath>
       <Wreath>
-        <p className="text-[0.625rem] md:text-base">Sign-up</p>
-        <p className="mt-1.5 text-center text-xs font-bold text-balance md:text-2xl">
+        <p className={labelClass}>Sign-up</p>
+        <p className={valueClass}>
           No account
           <br />
           Needed
         </p>
       </Wreath>
       <Wreath>
-        <p className="text-[0.625rem] md:text-base">Connection</p>
-        <p className="mt-1.5 text-center text-xs font-bold text-balance md:text-xl">
+        <p className={labelClass}>Connection</p>
+        <p className={valueClass}>
           Wi-Fi + Cloud
           <br />
           Anywhere

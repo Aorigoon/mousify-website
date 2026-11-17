@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
@@ -10,37 +10,21 @@ const navItems = [
   { label: "FAQ", href: "/#faq" },
 ];
 
+// v2.5: the floating glass pill shows from page load — no scroll-conditional
+// full nav anymore. Entrance animation lives in globals.css (.nav-entrance).
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 flex flex-col items-center transition-all duration-300 ${
-        scrolled ? "px-4 pt-3" : "px-8 pt-8"
-      }`}
-    >
-      <nav
-        className={`flex items-center transition-all duration-300 ${
-          scrolled
-            ? "w-fit gap-6 rounded-full border border-border/60 bg-white/70 py-2 pr-2 pl-5 shadow-3xl backdrop-blur-xl"
-            : "w-full max-w-7xl justify-between"
-        }`}
-      >
-        <a href="/" className="flex items-center gap-2.5">
+    <header className="nav-entrance fixed inset-x-0 top-0 z-50 flex flex-col items-center px-4 pt-3">
+      <nav className="flex w-fit items-center gap-6 rounded-full border border-border/60 bg-white/70 py-2 pr-2 pl-5 shadow-3xl backdrop-blur-xl">
+        <a href="/" className="group flex items-center gap-2.5">
           <Image
             src="/mousify-icon.png"
             alt="Mousify logo"
             width={28}
             height={28}
-            className="rounded-lg"
+            className="rounded-lg transition-transform duration-300 group-hover:scale-110"
           />
           <span className="text-base font-semibold tracking-tight">Mousify</span>
         </a>
@@ -56,7 +40,8 @@ export default function Nav() {
           ))}
         </div>
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <span className="rounded-full border border-border bg-white px-2 py-0.5 text-[11px] font-medium text-muted-foreground sm:px-2.5 sm:py-1 sm:text-xs">
+          <span className="flex items-center gap-1.5 rounded-full border border-border bg-white px-2 py-0.5 text-[11px] font-medium text-muted-foreground sm:px-2.5 sm:py-1 sm:text-xs">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
             Closed testing
           </span>
           <a

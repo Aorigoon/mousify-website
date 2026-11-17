@@ -1,4 +1,5 @@
 import { AppWindow, Laptop, Monitor, Smartphone } from "lucide-react";
+import TesterSignup from "@/components/TesterSignup";
 
 const RELEASES_URL = "https://github.com/Aorigoon/mouse/releases";
 
@@ -7,10 +8,12 @@ type DownloadItem = {
   title: string;
   detail: string;
   note: string;
-  // href set = real download link; button set without href = disabled
-  // placeholder; neither = "Coming soon" card with no button.
+  // href set = real download link; tester set = opens the closed-testing
+  // signup modal; button set without either = disabled placeholder;
+  // neither = "Coming soon" card with no button.
   button?: string;
   href?: string;
+  tester?: boolean;
 };
 
 const downloads: DownloadItem[] = [
@@ -20,6 +23,7 @@ const downloads: DownloadItem[] = [
     detail: "For your phone",
     note: "Closed testing · Link coming soon",
     button: "Get it on Google Play",
+    tester: true,
   },
   {
     icon: Monitor,
@@ -80,6 +84,8 @@ export default function Download() {
                 >
                   {item.button}
                 </a>
+              ) : item.tester ? (
+                <TesterSignup label={item.button!} />
               ) : item.button ? (
                 <button
                   type="button"

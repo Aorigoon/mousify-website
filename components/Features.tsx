@@ -44,7 +44,11 @@ const features: Feature[] = [
 function FeatureBox({ feature, reveal }: { feature: Feature; reveal: "left" | "right" }) {
   return (
     <div data-reveal={reveal} className="flex flex-col items-center text-center">
-      <PhoneShot src={feature.image} alt={feature.alt} className="w-[280px] sm:w-[320px]" />
+      <PhoneShot
+        src={feature.image}
+        alt={feature.alt}
+        className="w-[280px] sm:w-[320px]"
+      />
       <h3 className="mt-8 text-3xl font-semibold tracking-tight sm:text-4xl">{feature.title}</h3>
       <p className="mt-3 max-w-sm text-base leading-6 text-muted-foreground sm:text-lg">
         {feature.description}

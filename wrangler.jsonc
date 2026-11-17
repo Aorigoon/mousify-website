@@ -11,6 +11,13 @@
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"
 	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "mousify-testers",
+			"database_id": "58daca48-4816-49cb-b0f1-66d5654c76eb"
+		}
+	],
 	"services": [
 		{
 			// Self-reference service binding, the service name must match the worker name

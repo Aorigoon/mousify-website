@@ -40,10 +40,6 @@ export default function Nav() {
           ))}
         </div>
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <span className="flex items-center gap-1.5 rounded-full border border-border bg-white px-2 py-0.5 text-[11px] font-medium text-muted-foreground sm:px-2.5 sm:py-1 sm:text-xs">
-            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Closed testing
-          </span>
           <a
             href="/#download"
             className="hidden h-9 items-center justify-center rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-3xl transition hover:bg-primary/90 md:inline-flex"

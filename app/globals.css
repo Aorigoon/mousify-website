@@ -106,14 +106,6 @@
   }
 }
 
-/* Soft blue-grey gradient backdrop behind the phone in feature blocks. */
-.visual-backdrop {
-  background:
-    radial-gradient(26rem 18rem at 18% 8%, oklch(0.82 0.12 255 / 0.55), transparent 70%),
-    radial-gradient(24rem 18rem at 85% 92%, oklch(0.85 0.1 250 / 0.5), transparent 70%),
-    linear-gradient(160deg, oklch(0.94 0.02 250), oklch(0.9 0.03 260));
-}
-
 /* Feature reveal on scroll (600ms ease-out, ±48px + fade). The hidden state
    only applies once JS adds .reveal-ready, so SSR / no-JS shows content. */
 .reveal-ready [data-reveal] {

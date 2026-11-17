@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 const LEGAL_URL =
   "https://github.com/Aorigoon/mouse/blob/main/app/lib/views/legal_page.dart";
 const REPO_URL = "https://github.com/Aorigoon/mouse";
-const RELEASES_URL = "https://github.com/Aorigoon/mouse/releases";
 
 type FooterLink = { label: ReactNode; href: string; title: string };
 
@@ -20,8 +19,8 @@ const columns: { title: string; links: FooterLink[] }[] = [
   {
     title: "Downloads",
     links: [
-      { label: "For Android", href: RELEASES_URL, title: "Download the Android APK" },
-      { label: "For Linux", href: RELEASES_URL, title: "Download the Linux AppImage" },
+      { label: "For Android", href: "/#download", title: "Download Mousify for Android" },
+      { label: "For Linux", href: "/#download", title: "Download Mousify for Linux" },
     ],
   },
   {

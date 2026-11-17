@@ -1,19 +1,17 @@
 import { AppWindow, Laptop, Monitor, Smartphone } from "lucide-react";
-import TesterSignup from "@/components/TesterSignup";
-
-const RELEASES_URL = "https://github.com/Aorigoon/mouse/releases";
+import TesterSignup, { type SignupVariant } from "@/components/TesterSignup";
 
 type DownloadItem = {
   icon: typeof Smartphone;
   title: string;
   detail: string;
   note: string;
-  // href set = real download link; tester set = opens the closed-testing
-  // signup modal; button set without either = disabled placeholder;
+  // tester set = opens the email signup modal (variant picks its copy);
+  // button set without tester = disabled placeholder;
   // neither = "Coming soon" card with no button.
   button?: string;
-  href?: string;
   tester?: boolean;
+  variant?: SignupVariant;
 };
 
 const downloads: DownloadItem[] = [
@@ -31,7 +29,8 @@ const downloads: DownloadItem[] = [
     detail: "AppImage for your PC",
     note: "Latest release · ≈ 36 MB",
     button: "Download for Linux",
-    href: RELEASES_URL,
+    tester: true,
+    variant: "linux",
   },
   {
     icon: AppWindow,
@@ -77,15 +76,8 @@ export default function Download() {
               <h3 className="mt-4 text-xl font-medium">{item.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
               <p className="mt-4 text-sm text-muted-foreground">{item.note}</p>
-              {item.href ? (
-                <a
-                  href={item.href}
-                  className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-secondary px-6 text-sm font-medium text-secondary-foreground transition hover:bg-secondary/80"
-                >
-                  {item.button}
-                </a>
-              ) : item.tester ? (
-                <TesterSignup label={item.button!} />
+              {item.tester ? (
+                <TesterSignup label={item.button!} variant={item.variant} />
               ) : item.button ? (
                 <button
                   type="button"

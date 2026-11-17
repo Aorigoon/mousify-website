@@ -18,6 +18,12 @@
 			"database_id": "58daca48-4816-49cb-b0f1-66d5654c76eb"
 		}
 	],
+	"r2_buckets": [
+		{
+			"binding": "DOWNLOADS",
+			"bucket_name": "mousify-downloads"
+		}
+	],
 	"services": [
 		{
 			// Self-reference service binding, the service name must match the worker name

@@ -3,9 +3,36 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 
-// Closed-testing signup: trigger button + modal. Posts {email} to
-// /api/tester (D1-backed, built by the backend worker).
-export default function TesterSignup({ label }: { label: string }) {
+// Email modal: trigger button + modal. Posts {email} to /api/tester
+// (D1-backed). Android collects closed-testing signups; Linux starts
+// the AppImage download on success.
+export type SignupVariant = "android" | "linux";
+
+const COPY = {
+  android: {
+    heading: "Join closed testing",
+    text: "Closed testing — apna email daalo, Play Store link mil jayega.",
+    submit: "Become a tester",
+    submitting: "Joining…",
+    successHeading: "You're on the list!",
+  },
+  linux: {
+    heading: "Download for Linux",
+    text: "Enter your email to download Mousify for Linux",
+    submit: "Download",
+    submitting: "Downloading…",
+    successHeading: "Download shuru ho gaya!",
+  },
+} as const;
+
+export default function TesterSignup({
+  label,
+  variant = "android",
+}: {
+  label: string;
+  variant?: SignupVariant;
+}) {
+  const copy = COPY[variant];
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -38,6 +65,10 @@ export default function TesterSignup({ label }: { label: string }) {
         return;
       }
       setDone(true);
+      if (variant === "linux") {
+        // Attachment response: the download starts, the page stays.
+        window.location.href = "/download/linux";
+      }
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -58,7 +89,7 @@ export default function TesterSignup({ label }: { label: string }) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Join closed testing"
+          aria-label={copy.heading}
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
         >
           <div
@@ -78,20 +109,31 @@ export default function TesterSignup({ label }: { label: string }) {
             {done ? (
               <>
                 <h3 className="text-2xl font-semibold tracking-tight">
-                  You&apos;re on the list!
+                  {copy.successHeading}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Thanks for joining. We&apos;ll send the Play Store link to{" "}
-                  {email.trim()} as soon as closed testing opens.
-                </p>
+                {variant === "linux" ? (
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    The AppImage is downloading — check your downloads folder.
+                    If it doesn&apos;t start,{" "}
+                    <a href="/download/linux" className="underline">
+                      click here to try again
+                    </a>
+                    .
+                  </p>
+                ) : (
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    Thanks for joining. We&apos;ll send the Play Store link to{" "}
+                    {email.trim()} as soon as closed testing opens.
+                  </p>
+                )}
               </>
             ) : (
               <>
                 <h3 className="text-2xl font-semibold tracking-tight">
-                  Join closed testing
+                  {copy.heading}
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Closed testing — apna email daalo, Play Store link mil jayega.
+                  {copy.text}
                 </p>
                 <form onSubmit={submit} noValidate className="mt-6 flex flex-col gap-3">
                   <input
@@ -116,7 +158,7 @@ export default function TesterSignup({ label }: { label: string }) {
                     disabled={submitting}
                     className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-3xl transition hover:bg-primary/90 disabled:opacity-50"
                   >
-                    {submitting ? "Joining…" : "Become a tester"}
+                    {submitting ? copy.submitting : copy.submit}
                   </button>
                 </form>
               </>

@@ -1,43 +1,42 @@
 import Image from "next/image";
-
-const RELEASES_URL = "https://github.com/Aorigoon/mouse/releases";
+import Nav from "@/components/Nav";
+import PhoneShot from "@/components/PhoneShot";
 
 export default function Hero() {
   return (
-    <section className="mx-auto max-w-6xl px-5 pt-16 pb-20 text-center sm:pt-24">
-      <span className="inline-block rounded-full border border-black/10 bg-white px-4 py-1.5 text-sm text-ink/70">
-        Free · No account · Works anywhere
-      </span>
-      <h1 className="mx-auto mt-6 max-w-2xl text-4xl leading-[1.1] font-medium tracking-tight sm:text-6xl">
-        Your phone is your PC&rsquo;s touchpad.
-      </h1>
-      <p className="mx-auto mt-5 max-w-2xl text-base text-ink/60 sm:text-lg">
-        Touchpad, keyboard, and media for your Linux PC — over Wi-Fi or cloud.
-      </p>
-      <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+    <div className="relative z-[1] grid w-full place-items-center overflow-hidden p-8">
+      <div aria-hidden className="blur-hero pointer-events-none absolute inset-0 -z-10" />
+      <Nav />
+      <div className="mt-16 flex flex-col items-center gap-6">
+        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-2.5 py-1 font-normal">
+          <Image
+            src="/mousify-icon.png"
+            alt=""
+            width={24}
+            height={24}
+            className="h-6 w-6 rounded-full"
+          />
+          <span className="px-2 text-xs font-medium text-muted-foreground sm:text-sm">
+            <span className="text-foreground">Free</span> · No account ·
+            Works anywhere
+          </span>
+        </span>
+        <h1 className="text-center text-4xl leading-[1.1] font-medium tracking-tight sm:text-7xl">
+          Your phone is your PC&rsquo;s
+          <span className="block text-muted-foreground">touchpad.</span>
+        </h1>
+        <p className="max-w-lg text-center leading-6 tracking-tight sm:text-xl">
+          Touchpad, keyboard, and media for your Linux PC — over Wi-Fi or from
+          anywhere with Cloud mode.
+        </p>
         <a
-          href={RELEASES_URL}
-          className="w-full rounded-full bg-royal px-7 py-3 text-sm font-medium text-white transition hover:bg-royal/90 sm:w-auto"
+          href="#download"
+          className="mb-10 inline-flex h-10 w-fit items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-3xl transition hover:bg-primary/90"
         >
-          Download for Android
+          Get Started
         </a>
-        <a
-          href={RELEASES_URL}
-          className="w-full rounded-full border border-ink/15 bg-white px-7 py-3 text-sm font-medium text-ink transition hover:border-ink/30 sm:w-auto"
-        >
-          Download for Linux
-        </a>
+        <PhoneShot priority />
       </div>
-      <div className="mx-auto mt-14 w-fit rounded-[2.75rem] border border-black/10 bg-ink p-2.5">
-        <Image
-          src="/app-home.png"
-          alt="Mousify app — touchpad home screen"
-          width={300}
-          height={649}
-          priority
-          className="w-[280px] rounded-[2.25rem] sm:w-[300px]"
-        />
-      </div>
-    </section>
+    </div>
   );
 }

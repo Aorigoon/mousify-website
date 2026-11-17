@@ -1,0 +1,21 @@
+export default function Quote() {
+  return (
+    <figure className="mx-auto flex max-w-3xl flex-col items-center px-4 py-12 text-center">
+      <blockquote className="text-3xl leading-[1.1] font-medium tracking-tighter text-balance md:text-5xl md:text-wrap">
+        <span>&ldquo;Your phone is already in your hand —</span>
+        <span className="text-muted-foreground/50">
+          {" "}
+          it should be the only remote your PC ever needs.&rdquo;
+        </span>
+      </blockquote>
+      <figcaption className="mt-10">
+        <span className="block font-semibold tracking-tight md:text-xl">
+          Mousify Team
+        </span>
+        <span className="mt-1 block text-xs tracking-tighter text-muted-foreground md:text-xl">
+          Aorigoon
+        </span>
+      </figcaption>
+    </figure>
+  );
+}

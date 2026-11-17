@@ -27,38 +27,47 @@ export default function Download() {
   return (
     <section
       id="download"
-      className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20"
+      className="mx-auto flex w-full max-w-6xl scroll-mt-20 flex-col items-center gap-6 px-6 py-14 md:px-10 md:py-25"
     >
-      <h2 className="text-center text-3xl font-medium tracking-tight sm:text-4xl">
-        Download Mousify.
+      <span className="inline-flex w-fit items-center justify-center rounded-md border border-transparent bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground/50 uppercase">
+        Download
+      </span>
+      <h2 className="text-center text-3xl leading-[1.1] font-medium tracking-tight sm:text-5xl">
+        Get Mousify,
+        <div className="text-muted-foreground">free, today.</div>
       </h2>
-      <p className="mt-3 text-center text-ink/60">
+      <p className="mb-3 max-w-lg text-center leading-6 tracking-tight sm:text-xl lg:mb-8">
         Free forever. No account, no sign-up.
       </p>
-      <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
-        {downloads.map((item) => (
-          <div
-            key={item.title}
-            className="flex flex-col items-center rounded-3xl bg-white p-8 text-center"
-          >
-            <item.icon className="h-8 w-8 text-royal" strokeWidth={2} />
-            <h3 className="mt-4 text-xl font-medium">{item.title}</h3>
-            <p className="mt-1 text-sm text-ink/60">{item.detail}</p>
-            <p className="mt-4 text-sm text-ink/60">
-              {item.version} · {item.size}
-            </p>
-            <a
-              href={RELEASES_URL}
-              className={
-                item.primary
-                  ? "mt-6 rounded-full bg-royal px-7 py-3 text-sm font-medium text-white transition hover:bg-royal/90"
-                  : "mt-6 rounded-full border border-ink/15 bg-white px-7 py-3 text-sm font-medium text-ink transition hover:border-ink/30"
-              }
+      <div className="grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
+        {downloads.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={item.title}
+              className="flex flex-col items-center rounded-lg border bg-card p-8 text-center"
             >
-              {item.button}
-            </a>
-          </div>
-        ))}
+              <div className="w-fit rounded-sm bg-secondary p-3 text-foreground">
+                <Icon size={20} />
+              </div>
+              <h3 className="mt-4 text-xl font-medium">{item.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
+              <p className="mt-4 text-sm text-muted-foreground">
+                {item.version} · {item.size}
+              </p>
+              <a
+                href={RELEASES_URL}
+                className={
+                  item.primary
+                    ? "mt-6 inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-3xl transition hover:bg-primary/90"
+                    : "mt-6 inline-flex h-10 items-center justify-center rounded-full bg-secondary px-6 text-sm font-medium text-secondary-foreground transition hover:bg-secondary/80"
+                }
+              >
+                {item.button}
+              </a>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

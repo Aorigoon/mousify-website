@@ -16,7 +16,13 @@ function Branch({ flip = false }: { flip?: boolean }) {
       viewBox="0 0 43 81"
       fill="none"
       aria-hidden
-      className={`w-[19px] opacity-60 md:w-[43px] ${flip ? "rotate-y-180" : ""}`}
+      // Text block ki poori height tak lambi ho (Zain, 2026-11-18: text
+      // pattiyon ke BEECH me hona chahiye) — width se height banti thi
+      // (19px → ~36px) jab ke text ~65px tall hai, is liye value neeche
+      // latak raha tha. preserveAspectRatio="none" se branch vertically
+      // stretch hoti hai (laurel lambi-narrow hoti hi hai).
+      preserveAspectRatio="none"
+      className={`h-full w-[19px] opacity-60 md:w-[43px] ${flip ? "rotate-y-180" : ""}`}
     >
       <defs>
         <linearGradient id="laurel" x1="21" y1="0" x2="21" y2="80" gradientUnits="userSpaceOnUse">
@@ -39,9 +45,9 @@ function Branch({ flip = false }: { flip?: boolean }) {
 
 function Wreath({ children }: { children: ReactNode }) {
   return (
-    <div className="grid w-min grid-cols-[1fr_64px_1fr] md:grid-cols-[1fr_170px_1fr]">
+    <div className="grid w-min grid-cols-[1fr_64px_1fr] items-stretch md:grid-cols-[1fr_170px_1fr]">
       <Branch />
-      <div className="-mx-2.5 mt-1 flex flex-col items-center md:-mt-2.5">
+      <div className="-mx-2.5 flex flex-col items-center justify-center">
         {children}
       </div>
       <Branch flip />

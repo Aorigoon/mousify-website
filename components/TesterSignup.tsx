@@ -11,7 +11,7 @@ export type SignupVariant = "android" | "linux";
 const COPY = {
   android: {
     heading: "Join closed testing",
-    text: "Closed testing — apna email daalo, Play Store link mil jayega.",
+    text: "Enter the same email address that's signed in to your Play Store — we'll send the closed testing link to that email.",
     submit: "Become a tester",
     submitting: "Joining…",
     successHeading: "You're on the list!",
@@ -21,7 +21,7 @@ const COPY = {
     text: "Enter your email to download Mousify for Linux",
     submit: "Download",
     submitting: "Downloading…",
-    successHeading: "Download shuru ho gaya!",
+    successHeading: "Your download has started!",
   },
 } as const;
 

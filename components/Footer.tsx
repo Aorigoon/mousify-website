@@ -1,9 +1,8 @@
-import { Github, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import type { ReactNode } from "react";
 
 const LEGAL_URL =
   "https://github.com/Aorigoon/mouse/blob/main/app/lib/views/legal_page.dart";
-const REPO_URL = "https://github.com/Aorigoon/mouse";
 
 type FooterLink = { label: ReactNode; href: string; title: string };
 
@@ -28,7 +27,6 @@ const columns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "Privacy Policy", href: LEGAL_URL, title: "Read our Privacy Policy" },
       { label: "Contact", href: "mailto:contact@aorigoon.com", title: "Email us" },
-      { label: "GitHub", href: REPO_URL, title: "View our GitHub repository" },
     ],
   },
   {
@@ -43,16 +41,6 @@ const columns: { title: string; links: FooterLink[] }[] = [
         ),
         href: "mailto:contact@aorigoon.com",
         title: "Email us",
-      },
-      {
-        label: (
-          <span className="flex items-center gap-2">
-            <Github className="h-4 w-4" />
-            <span>GitHub</span>
-          </span>
-        ),
-        href: REPO_URL,
-        title: "View our GitHub repository",
       },
     ],
   },

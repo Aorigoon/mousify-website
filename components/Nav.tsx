@@ -8,6 +8,10 @@ const navItems = [
   { label: "Features", href: "/#features" },
   { label: "Download", href: "/#download" },
   { label: "FAQ", href: "/#faq" },
+  // v2.13: legal pages visible in the top nav too — Zain opened the site
+  // and could not find them in the footer alone.
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
 ];
 
 // v2.5: the floating glass pill shows from page load — no scroll-conditional

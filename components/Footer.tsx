@@ -1,9 +1,6 @@
 import { Mail } from "lucide-react";
 import type { ReactNode } from "react";
 
-const LEGAL_URL =
-  "https://github.com/Aorigoon/mouse/blob/main/app/lib/views/legal_page.dart";
-
 type FooterLink = { label: ReactNode; href: string; title: string };
 
 const columns: { title: string; links: FooterLink[] }[] = [
@@ -12,7 +9,7 @@ const columns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "Features", href: "/#features", title: "See our features" },
       { label: "Download", href: "/#download", title: "Download Mousify" },
-      { label: "FAQ", href: "/#faq", title: "Frequently asked questions" },
+      { label: "FAQ", href: "/faq", title: "Frequently asked questions" },
     ],
   },
   {
@@ -25,7 +22,8 @@ const columns: { title: string; links: FooterLink[] }[] = [
   {
     title: "Company",
     links: [
-      { label: "Privacy Policy", href: LEGAL_URL, title: "Read our Privacy Policy" },
+      { label: "Privacy Policy", href: "/privacy", title: "Read our Privacy Policy" },
+      { label: "Terms of Service", href: "/terms", title: "Read our Terms of Service" },
       { label: "Contact", href: "mailto:contact@aorigoon.com", title: "Email us" },
     ],
   },

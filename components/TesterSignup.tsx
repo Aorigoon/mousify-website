@@ -5,8 +5,20 @@ import { X } from "lucide-react";
 
 // Email modal: trigger button + modal. Posts {email} to /api/tester
 // (D1-backed). Android collects closed-testing signups; Linux starts
-// the AppImage download on success.
-export type SignupVariant = "android" | "linux";
+// the AppImage download on success; Windows starts the ZIP download.
+export type SignupVariant = "android" | "linux" | "windows";
+
+// Download routes for the variants that start a download on success.
+const DOWNLOAD_PATH: Partial<Record<SignupVariant, string>> = {
+  linux: "/download/linux",
+  windows: "/download/windows",
+};
+
+// Success text naming the file the user is downloading.
+const DOWNLOAD_FILE: Partial<Record<SignupVariant, string>> = {
+  linux: "The AppImage is downloading",
+  windows: "The ZIP file is downloading",
+};
 
 const COPY = {
   android: {
@@ -19,6 +31,13 @@ const COPY = {
   linux: {
     heading: "Download for Linux",
     text: "Enter your email to download Mousify for Linux",
+    submit: "Download",
+    submitting: "Downloading…",
+    successHeading: "Your download has started!",
+  },
+  windows: {
+    heading: "Download for Windows",
+    text: "Enter your email to download Mousify for Windows",
     submit: "Download",
     submitting: "Downloading…",
     successHeading: "Your download has started!",
@@ -65,9 +84,10 @@ export default function TesterSignup({
         return;
       }
       setDone(true);
-      if (variant === "linux") {
+      const dl = DOWNLOAD_PATH[variant];
+      if (dl) {
         // Attachment response: the download starts, the page stays.
-        window.location.href = "/download/linux";
+        window.location.href = dl;
       }
     } catch {
       setError("Something went wrong. Please try again.");
@@ -111,11 +131,11 @@ export default function TesterSignup({
                 <h3 className="text-2xl font-semibold tracking-tight">
                   {copy.successHeading}
                 </h3>
-                {variant === "linux" ? (
+                {DOWNLOAD_PATH[variant] ? (
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    The AppImage is downloading — check your downloads folder.
+                    {DOWNLOAD_FILE[variant]} — check your downloads folder.
                     If it doesn&apos;t start,{" "}
-                    <a href="/download/linux" className="underline">
+                    <a href={DOWNLOAD_PATH[variant]} className="underline">
                       click here to try again
                     </a>
                     .

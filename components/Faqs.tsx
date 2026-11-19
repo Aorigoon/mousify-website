@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Does it work on Windows or Mac?",
-    a: "Not yet — the PC server is Linux only for now.",
+    a: "Windows is supported — download it below. macOS is not supported yet.",
   },
   {
     q: "Do I need an account?",

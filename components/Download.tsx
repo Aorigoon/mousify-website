@@ -36,7 +36,10 @@ const downloads: DownloadItem[] = [
     icon: AppWindow,
     title: "Windows",
     detail: "For Windows PCs",
-    note: "Coming soon",
+    note: "Latest release · ≈ 24 MB",
+    button: "Download for Windows",
+    tester: true,
+    variant: "windows",
   },
   {
     icon: Laptop,

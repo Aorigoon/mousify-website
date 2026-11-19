@@ -17,6 +17,7 @@ const columns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "For Android", href: "/#download", title: "Download Mousify for Android" },
       { label: "For Linux", href: "/#download", title: "Download Mousify for Linux" },
+      { label: "For Windows", href: "/#download", title: "Download Mousify for Windows" },
     ],
   },
   {
